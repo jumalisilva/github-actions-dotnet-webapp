@@ -24,7 +24,7 @@ jobs:
 
       # Navigate to the project directory (update 'project-directory' as needed)
       - name: Change directory to project folder
-        run: cd .github/workflows/dotnet-build.yml # Replace with the actual path to your project
+        run: cat .github/workflows/dotnet-build.yml # Replace with the actual path to your project
 
       # Restore dependencies
       - name: Restore dependencies
