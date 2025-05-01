@@ -5,37 +5,33 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *' # Executes every hour
+    - cron: '0 * * * *' # Executa a cada hora
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code
+      # Checkout do código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Setup .NET SDK
+      # Configuração do .NET SDK
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x' # Replace with the desired version
+          dotnet-version: '7.0.x' # Substitua pela versão desejada
 
-      # Navigate to the project directory (update 'project-directory' as needed)
-      - name: Change directory to project folder
-        run: cat .github/workflows/dotnet-build.yml # Replace with the actual path to your project
-
-      # Restore dependencies
+      # Restaurar dependências
       - name: Restore dependencies
         run: dotnet restore
 
-      # Build the project
+      # Compilar o projeto
       - name: Build project
         run: dotnet build --configuration Release
 
-      # Custom script to list output files
+      # Script personalizado para verificar arquivos gerados
       - name: Custom script - List build output
         run: |
-          echo "Listing generated files in the output folder:"
+          echo "Listando arquivos gerados na pasta de saída:"
           ls -la ./bin/Release
