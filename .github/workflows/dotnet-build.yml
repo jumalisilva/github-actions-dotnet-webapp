@@ -20,18 +20,18 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x' # Substitua pela versão desejada
+          dotnet-version: '8.0'
 
       # Restaurar dependências
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./github4women/github4women.csproj
 
       # Compilar o projeto
       - name: Build project
-        run: dotnet build --configuration Release
+        run: dotnet build ./github4women/github4women.csproj --configuration Release
 
       # Script personalizado para verificar arquivos gerados
       - name: Custom script - List build output
         run: |
           echo "Listando arquivos gerados na pasta de saída:"
-          ls -la ./bin/Release
+          ls -la ./github4women/bin/Release/net8.0
